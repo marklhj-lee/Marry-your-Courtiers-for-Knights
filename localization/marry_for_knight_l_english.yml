@@ -1,0 +1,8 @@
+﻿l_english:
+courtiers_marry_decision:0 "Mass Marriage for my Courtiers"
+courtiers_marry_decision_desc:0 "To defend the realm better, I will marry off my unmarried courtiers to able-bodied men"
+courtiers_marry_decision.tt:0 "Your unmarried courtiers will match with unmarried [knights|E] within diplomatic range."
+courtiers_marry_decision_confirm:0 "$invite_knights_decision_confirm$"
+
+is_physically_able_adult_filter:0 "Physically Abled Adult"
+is_physically_able_adult_filter_desc:0 "Only show Characters that are Physically Abled Adult"
