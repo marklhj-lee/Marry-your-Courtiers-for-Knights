@@ -1,8 +1,8 @@
-courtiers_marry_decision = {
+courtiers_mass_marriage_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
-	desc = courtiers_marry_decision_desc
+	desc = courtiers_mass_marriage_decision_desc
 	
-	confirm_text = courtiers_marry_decision_confirm
+	confirm_text = courtiers_mass_marriage_decision_confirm
 
 	is_shown = { 
 		is_ai = no
@@ -74,6 +74,21 @@ courtiers_marry_decision = {
 					save_temporary_scope_as = spouse
 				}
 			}
+			if = {
+				limit = {
+					root.culture = {
+						has_cultural_parameter = better_knights_from_decision
+					}
+				}
+				hidden_effect = {
+					scope:spouse = {
+						blademaster_lifestyle_rank_up_effect = yes
+						knight_increase_prowess_chance_effect = yes
+						knight_increase_prowess_chance_effect = yes
+					}
+				}
+			}
+
 			if = {
 				limit = {
 					is_male = yes
