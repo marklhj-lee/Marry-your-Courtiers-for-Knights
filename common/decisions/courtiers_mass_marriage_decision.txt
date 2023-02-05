@@ -3,6 +3,7 @@ courtiers_mass_marriage_decision = {
 	desc = courtiers_mass_marriage_decision_desc
 	
 	confirm_text = courtiers_mass_marriage_decision_confirm
+	selection_tooltip = courtiers_mass_marriage_decision_tooltip
 
 	# Shown only to player
 	is_shown = { 
