@@ -4,10 +4,14 @@ courtiers_mass_marriage_decision = {
 	
 	confirm_text = courtiers_mass_marriage_decision_confirm
 
+	# Shown only to player
 	is_shown = { 
 		is_ai = no
 		is_ruler = yes
         }
+
+	# Avaliable when there are unmarried adult courtiers eligible to marry
+	# This does not include family
 	is_valid ={
 		any_courtier = {
 			age >= 16
@@ -26,7 +30,10 @@ courtiers_mass_marriage_decision = {
 		}
 		
 	}
-	
+	# Go through all eligible courtiers and find random pool character
+	# If no such pool character exists, Create a pool_character based on existing spouse template
+	# Considers cultural tradiition similar to invite knight decision
+	# Either matrilineal marriage or marriage
 	effect = {
 		every_courtier = {
 			limit = {
@@ -57,10 +64,15 @@ courtiers_mass_marriage_decision = {
 						allowed_to_marry_character_gender_trigger = { CHARACTER = scope:every_courtier }
 						is_physically_able_adult = yes
 						age <= 40
+						prowess >= 12
 						is_married = no
 						can_marry_trigger = yes
 						is_concubine = no
 						is_attracted_to_gender_of = scope:every_courtier
+						NOT = {
+							is_close_or_extended_family_of = root
+						}
+						
 					}
 					save_temporary_scope_as = spouse
 				}
