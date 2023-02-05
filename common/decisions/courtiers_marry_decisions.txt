@@ -10,6 +10,7 @@ courtiers_marry_decision = {
         }
 	is_valid ={
 		any_courtier = {
+			age >= 16
 			is_married = no
 			is_betrothed = no
 			NOT = {
@@ -31,6 +32,8 @@ courtiers_marry_decision = {
 
 		every_courtier = {
 			limit = {
+				age >= 16
+				is_male = yes
 				is_married = no
 				is_betrothed = no
 				NOT = {
@@ -44,11 +47,80 @@ courtiers_marry_decision = {
 					}
 				}
 			}
-				
 			add_gold = 1000
-		}
-		# every_courtier = {
+			save_temporary_scope_as = template
+			if = {
+				limit = {
+					exists = scope:every_courtier.location
+				}
+				random_courtier = {
+					province = scope:every_courtier.location
+					limit = {
+						allowed_to_marry_character_gender_trigger = { CHARACTER = scope:every_courtier }
+						is_physically_able_adult = yes
+						age <= 40
+						is_married = no
+						can_marry_trigger = yes
+						is_concubine = no
+						is_attracted_to_gender_of = scope:every_courtier
+						NOT = {
+							is_close_or_extended_family_of = root
+						}
+						NOT = {
+							is_courtier_of = root
+						}
+					}
+					add_gold = 500
+					save_temporary_scope_as = spouse
+				}
+			}
+			else = {
+				create_character = {
+					location = scope:template.location
+					gender_female_chance = scope:template.marriage_gender_adjusted_female_chance
+					template = pool_repopulate_spouse
+					save_temporary_scope_as = spouse
+				}
+				add_gold = 50
+			}
 
+			if = {
+				limit = {
+					is_female = yes
+					is_lowborn = no
+					scope:spouse = {
+						is_lowborn = yes
+					}
+				}
+				marry_matrilineal = scope:spouse
+			}
+			else_if = {
+				limit = {
+					is_male = yes
+					is_lowborn = yes
+					scope:spouse = {
+						is_lowborn = no
+					}
+				}
+				marry_matrilineal = scope:spouse
+			}
+			else = {
+				marry = scope:spouse
+			}
+			
+			scope:spouse = {
+				if = {
+					limit = {
+						exists = scope:template.host
+					}
+					visit_court_of = scope:template.host
+				}
+			}
+		}
+
+			
+
+		# every_courtier = {
 		# 	is_married = no
 		# 	is_betrothed = no
 		# 	NOT = {
@@ -125,19 +197,7 @@ courtiers_marry_decision = {
 		# }
 
 
-		# bachelor ={
-		# 	ordered_potential_marriage_option = {
-		# 		limit = {
-		# 			is_physically_able_adult = yes
-		# 			is_married = no
-		# 			can_marry_trigger = yes
-		# 			is_concubine = no
-		# 		}
-		# 		order_by = prowess
-		# 		position = 0
-		# 		check_range_bounds = no # If you don't want an error logged if the list is smaller than the min/max <effects> 
-		# 		save_temporary_scope_as = spouse
-		# 	}
+
 
 		# }
 		# bachelor = {
