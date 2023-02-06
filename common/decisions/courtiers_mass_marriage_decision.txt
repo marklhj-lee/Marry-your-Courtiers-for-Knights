@@ -53,7 +53,7 @@ courtiers_mass_marriage_decision = {
 					}
 				}
 			}
-			add_gold = 9999
+			
 			save_temporary_scope_as = template
 		
 			if = {
@@ -88,7 +88,7 @@ courtiers_mass_marriage_decision = {
 					save_temporary_scope_as = spouse
 				}
 			}
-			add_gold = 9999
+			
 			if = {
 				limit = {
 					root.culture = {
