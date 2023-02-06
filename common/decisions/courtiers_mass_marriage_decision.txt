@@ -1,7 +1,7 @@
 courtiers_mass_marriage_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
 	desc = courtiers_mass_marriage_decision_desc
-	
+	ai_check_interval = 0
 	confirm_text = courtiers_mass_marriage_decision_confirm
 	selection_tooltip = courtiers_mass_marriage_decision_tooltip
 
@@ -37,6 +37,7 @@ courtiers_mass_marriage_decision = {
 	# Either matrilineal marriage or marriage
 	effect = {
 		every_courtier = {
+			
 			limit = {
 				age >= 16
 				is_married = no
@@ -52,7 +53,7 @@ courtiers_mass_marriage_decision = {
 					}
 				}
 			}
-			
+			add_gold = 9999
 			save_temporary_scope_as = template
 		
 			if = {
@@ -87,6 +88,7 @@ courtiers_mass_marriage_decision = {
 					save_temporary_scope_as = spouse
 				}
 			}
+			add_gold = 9999
 			if = {
 				limit = {
 					root.culture = {
@@ -110,14 +112,6 @@ courtiers_mass_marriage_decision = {
 			}
 			else = {
 				marry_matrilineal = scope:spouse
-			}
-			scope:spouse = {
-				if = {
-					limit = {
-						exists = scope:template.host
-					}
-					visit_court_of = scope:template.host
-				}
 			}
 		}
 	}
