@@ -1,11 +1,10 @@
 courtiers_mass_marriage_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
 	desc = courtiers_mass_marriage_decision_desc
-	
-	confirm_text = courtiers_mass_marriage_decision_confirm
-	custom_tooltip = courtiers_mass_marriage_decision_tooltip
-
 	ai_check_interval = 0
+	confirm_text = courtiers_mass_marriage_decision_confirm
+	selection_tooltip = courtiers_mass_marriage_decision_tooltip
+
 	# Shown only to player
 	is_shown = { 
 		is_ai = no
@@ -46,6 +45,12 @@ courtiers_mass_marriage_decision = {
 					is_close_or_extended_family_of = root
 				}
 				can_marry_trigger = yes
+				root = {
+					is_character_interaction_valid = {
+						recipient = prev
+						interaction = marry_off_interaction
+					}
+				}
 			}
 			
 			save_temporary_scope_as = template
