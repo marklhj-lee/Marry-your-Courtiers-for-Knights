@@ -21,7 +21,10 @@
 			NOT = {
 				is_close_or_extended_family_of = root
 			}
-			can_marry_trigger = yes
+			custom_description = {
+				text = courtiers_mass_marriage.can_marry_trigger.tt
+				can_marry_trigger = yes
+			}
 			root = {
 				is_character_interaction_valid = {
 					recipient = prev
