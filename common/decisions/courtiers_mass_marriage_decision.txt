@@ -18,20 +18,21 @@
 			age >= 16
 			is_married = no
 			is_betrothed = no
-			is_concubine = no
+			
 			NOT = {
 				is_close_or_extended_family_of = root
 			}
 			custom_description = {
 				text = courtiers_mass_marriage.can_marry_trigger.tt
 				can_marry_trigger = yes
+				is_concubine = no
 			}
-			root = {
-				is_character_interaction_valid = {
-					recipient = prev
-					interaction = marry_off_interaction
-				}
-			}
+#			root = {
+#				is_character_interaction_valid = {
+#					recipient = prev
+#					interaction = marry_off_interaction
+#				}
+#			}
 		}
 		
 	}
