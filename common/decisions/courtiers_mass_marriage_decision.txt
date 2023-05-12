@@ -18,23 +18,23 @@
 			age >= 16
 			is_married = no
 			is_betrothed = no
-			
 			NOT = {
 				is_close_or_extended_family_of = root
+				
+			}
+			OR = {
+				AND = {
+					is_diarch = yes
+					diarch_loyalty >= diarch_loyalty_visibly_loyal_threshold
+				}
+				is_diarch = no
 			}
 			custom_description = {
 				text = courtiers_mass_marriage.can_marry_trigger.tt
 				can_marry_trigger = yes
 				is_concubine = no
 			}
-#			root = {
-#				is_character_interaction_valid = {
-#					recipient = prev
-#					interaction = marry_off_interaction
-#				}
-#			}
 		}
-		
 	}
 	# Go through all eligible courtiers and find random pool character
 	# If no such pool character exists, Create a pool_character based on existing spouse template
