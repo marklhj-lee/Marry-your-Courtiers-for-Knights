@@ -90,6 +90,7 @@
 					gender_female_chance = scope:template.marriage_gender_adjusted_female_chance
 					template = pool_repopulate_spouse
 					prowess = { 12 15 }
+					dynasty = generate
 					save_temporary_scope_as = spouse
 				}
 			}
